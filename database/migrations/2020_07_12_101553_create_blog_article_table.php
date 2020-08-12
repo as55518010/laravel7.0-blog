@@ -29,7 +29,7 @@ class CreateBlogArticleTable extends Migration
             $table->integer('art_collect')->default(0)->comment('文章收藏');
             $table->timestamps();
         });
-        \DB::statement("ALTER TABLE `blog_article` comment '文章表'");
+        // \DB::statement("ALTER TABLE `blog_article` comment '文章表'");
     }
 
     /**

@@ -25,7 +25,7 @@ class CreateBlogConfigTable extends Migration
             $table->timestamps();
             $table->softDeletesTz(0);
         });
-        \DB::statement("ALTER TABLE `blog_config` comment '網站配置'");
+        // \DB::statement("ALTER TABLE `blog_config` comment '網站配置'");
     }
 
     /**

@@ -19,7 +19,7 @@ class CreateBlogPermissionTable extends Migration
             $table->string('per_url', 255)->comment('權限對應路由');
             $table->timestamps();
         });
-        \DB::statement("ALTER TABLE `blog_permission` comment '權限'");
+        // \DB::statement("ALTER TABLE `blog_permission` comment '權限'");
     }
 
     /**

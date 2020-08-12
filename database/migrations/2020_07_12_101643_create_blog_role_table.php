@@ -18,7 +18,7 @@ class CreateBlogRoleTable extends Migration
             $table->string('role_name', 255)->comment('角色名稱');
             $table->timestamps();
         });
-        \DB::statement("ALTER TABLE `blog_role` comment '角色'");
+        // \DB::statement("ALTER TABLE `blog_role` comment '角色'");
     }
 
     /**

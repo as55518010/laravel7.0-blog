@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateDataHomeuserTable extends Migration
 {
@@ -24,7 +25,9 @@ class CreateDataHomeuserTable extends Migration
             $table->timestamps();
             $table->unique('user_name');
         });
-        \DB::statement("ALTER TABLE `data_homeuser` comment '前台用戶表'");
+
+
+        // DB::statement("ALTER TABLE `data_homeuser` comment '前台用戶表'");
     }
 
     /**

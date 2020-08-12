@@ -22,7 +22,7 @@ class CreateBlogCommentTable extends Migration
             $table->integer('post_ip')->default(0)->comment('所屬文章ID');
             $table->timestamps();
         });
-        \DB::statement("ALTER TABLE `blog_comment` comment '文章評論'");
+        // \DB::statement("ALTER TABLE `blog_comment` comment '文章評論'");
     }
 
     /**

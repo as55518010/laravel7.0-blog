@@ -19,7 +19,7 @@ class CreateBlogClientIpTable extends Migration
             $table->string('ip', 255)->comment('ip');
             $table->timestamps();
         });
-        \DB::statement("ALTER TABLE `blog_client_ip` comment '文章點讚紀錄'");
+        // \DB::statement("ALTER TABLE `blog_client_ip` comment '文章點讚紀錄'");
     }
 
     /**

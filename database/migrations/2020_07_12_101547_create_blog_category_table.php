@@ -22,7 +22,7 @@ class CreateBlogCategoryTable extends Migration
             $table->timestamps();
             $table->unique('cate_name');
         });
-        \DB::statement("ALTER TABLE `blog_category` comment '前台用戶表'");
+        // \DB::statement("ALTER TABLE `blog_category` comment '前台用戶表'");
     }
 
     /**

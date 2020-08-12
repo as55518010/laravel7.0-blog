@@ -18,7 +18,7 @@ class CreateBlogRolePermissionTable extends Migration
             $table->integer('permission_id')->comment('權限表關聯的外鍵');
             $table->timestamps();
         });
-        \DB::statement("ALTER TABLE `blog_role_permission` comment '角色權限關聯'");
+        // \DB::statement("ALTER TABLE `blog_role_permission` comment '角色權限關聯'");
     }
 
     /**

@@ -19,7 +19,7 @@ class CreateBlogCollectTable extends Migration
             $table->integer('uid')->default(0)->comment('收藏人ID');
             $table->timestamps();
         });
-        \DB::statement("ALTER TABLE `blog_collect` comment '文章收藏'");
+        // \DB::statement("ALTER TABLE `blog_collect` comment '文章收藏'");
     }
 
     /**

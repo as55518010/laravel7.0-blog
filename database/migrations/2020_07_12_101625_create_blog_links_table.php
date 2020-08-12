@@ -22,7 +22,7 @@ class CreateBlogLinksTable extends Migration
             $table->timestamps();
             $table->softDeletesTz(0);
         });
-        \DB::statement("ALTER TABLE `blog_links` comment '友情鏈接'");
+        // \DB::statement("ALTER TABLE `blog_links` comment '友情鏈接'");
     }
 
     /**
