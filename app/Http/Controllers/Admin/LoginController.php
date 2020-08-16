@@ -71,4 +71,11 @@ class LoginController extends Controller
         dd($encrypt, Crypt::decrypt($encrypt));
         return Crypt::decrypt($password);
     }
+    // 後台登出
+    public function logout()
+    {
+        // 清空 session 用戶訊息
+        session()->flush();
+        return redirect('admin/login');
+    }
 }

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,16 +12,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/{url}', function ($url) {
-//     return view('welcome');
-// })->where(['url'=>'.*']);
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    // 後台登陸
+    Route::get('login', 'LoginController@login');
+    // 驗證碼
+    Route::get('code', 'LoginController@code');
+    // 用戶登入
+    Route::post('dologin', 'LoginController@doLogin');
+    // 建立後台密碼
+    Route::get('crypt/{password}', 'LoginController@crypt');
 
-Route::view('admin/index', 'admin.index');
-// 後台登陸路由
-Route::get('admin/login', 'Admin\LoginController@login');
-// 驗證碼路由
-Route::get('admin/code', 'Admin\LoginController@code');
-// 用戶登入
-Route::post('admin/dologin', 'Admin\LoginController@doLogin');
-
-Route::get('admin/crypt/{password}', 'Admin\LoginController@crypt');
+    Route::group(['middleware' => ['IsLogin']], function () {
+        // 後台首頁
+        Route::view('index', 'admin.index');
+        // 後台歡迎頁
+        Route::view('welcome', 'admin.welcome');
+        // 後台登出
+        Route::get('logout', 'LoginController@logout');
+    });
+});
