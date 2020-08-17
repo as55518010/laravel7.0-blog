@@ -29,5 +29,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::view('welcome', 'admin.welcome');
         // 後台登出
         Route::get('logout', 'LoginController@logout');
+        // 後台用戶模塊相關路由
+        Route::resource('user', 'UserController');
     });
 });
