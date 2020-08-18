@@ -13,12 +13,12 @@ class CreateBlogRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_role', function (Blueprint $table) {
+        Schema::create('role', function (Blueprint $table) {
             $table->id()->comment('角色ID');
             $table->string('role_name', 255)->comment('角色名稱');
             $table->timestamps();
         });
-        // \DB::statement("ALTER TABLE `blog_role` comment '角色'");
+        \DB::statement("ALTER TABLE `blog_role` comment '角色'");
     }
 
     /**
@@ -28,6 +28,6 @@ class CreateBlogRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_role');
+        Schema::dropIfExists('role');
     }
 }

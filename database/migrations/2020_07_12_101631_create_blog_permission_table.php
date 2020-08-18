@@ -13,13 +13,14 @@ class CreateBlogPermissionTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_permission', function (Blueprint $table) {
+        Schema::create('permission', function (Blueprint $table) {
             $table->id()->comment('權限ID');
-            $table->string('per_name', 255)->comment('權限名');
-            $table->string('per_url', 255)->comment('權限對應路由');
+            $table->string('per_name', 255)->default(null)->comment('權限名');
+            $table->string('per_url', 255)->default(null)->comment('權限對應路由');
             $table->timestamps();
+            $table->softDeletesTz(0);
         });
-        // \DB::statement("ALTER TABLE `blog_permission` comment '權限'");
+        \DB::statement("ALTER TABLE `blog_permission` comment '權限'");
     }
 
     /**
@@ -29,6 +30,6 @@ class CreateBlogPermissionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_permission');
+        Schema::dropIfExists('permission');
     }
 }

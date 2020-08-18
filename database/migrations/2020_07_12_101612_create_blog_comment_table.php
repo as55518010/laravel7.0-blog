@@ -13,16 +13,17 @@ class CreateBlogCommentTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_comment', function (Blueprint $table) {
+        Schema::create('comment', function (Blueprint $table) {
             $table->id();
-            $table->integer('uid')->default(0)->comment('評論人ID');
-            $table->string('nickname', 255)->comment('用戶暱稱');
-            $table->string('head_pic', 255)->comment('用戶頭像');
+            $table->unsignedInteger('parent_id')->default(0)->comment('上級評論id,若是一級評論則為0');
+            $table->string('nickname', 100)->default(null)->comment('用戶暱稱');
+            $table->string('head_pic', 400)->default(null)->comment('用戶頭像');
             $table->text('content')->comment('評論內容');
-            $table->integer('post_ip')->default(0)->comment('所屬文章ID');
+            $table->unsignedInteger('post_ip')->default(null)->comment('評論所屬文章的ID');
             $table->timestamps();
+            $table->softDeletesTz(0);
         });
-        // \DB::statement("ALTER TABLE `blog_comment` comment '文章評論'");
+        \DB::statement("ALTER TABLE `blog_comment` comment '文章評論'");
     }
 
     /**
@@ -32,6 +33,6 @@ class CreateBlogCommentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_comment');
+        Schema::dropIfExists('comment');
     }
 }

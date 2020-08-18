@@ -13,12 +13,12 @@ class CreateBlogUserRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_user_role', function (Blueprint $table) {
+        Schema::create('user_role', function (Blueprint $table) {
             $table->integer('user_id')->comment('用戶表關聯的外鍵');
             $table->integer('role_id')->comment('角色表關聯的外鍵');
             $table->timestamps();
         });
-        // \DB::statement("ALTER TABLE `blog_user_role` comment '用戶角色關聯'");
+        \DB::statement("ALTER TABLE `blog_user_role` comment '用戶角色關聯'");
     }
 
     /**
@@ -28,6 +28,6 @@ class CreateBlogUserRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_user_role');
+        Schema::dropIfExists('user_role');
     }
 }

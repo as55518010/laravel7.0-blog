@@ -13,13 +13,14 @@ class CreateBlogCollectTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_collect', function (Blueprint $table) {
+        Schema::create('collect', function (Blueprint $table) {
             $table->id();
-            $table->integer('art_id')->default(0)->comment('收藏文章ID');
-            $table->integer('uid')->default(0)->comment('收藏人ID');
+            $table->unsignedInteger('art_id')->default(0)->comment('收藏文章ID');
+            $table->unsignedInteger('uid')->default(0)->comment('收藏人ID');
             $table->timestamps();
+            $table->softDeletesTz(0);
         });
-        // \DB::statement("ALTER TABLE `blog_collect` comment '文章收藏'");
+        \DB::statement("ALTER TABLE `blog_collect` comment '文章收藏'");
     }
 
     /**
@@ -29,6 +30,6 @@ class CreateBlogCollectTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_collect');
+        Schema::dropIfExists('collect');
     }
 }

@@ -13,16 +13,16 @@ class CreateBlogLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_links', function (Blueprint $table) {
+        Schema::create('links', function (Blueprint $table) {
             $table->id()->comment('友情鏈接ID');
-            $table->string('link_name', 255)->comment('鏈接名');
-            $table->string('link_title', 255)->comment('鏈接標題');
-            $table->string('link_url', 255)->comment('鏈接URL');
-            $table->integer('link_order')->comment('排序');
+            $table->string('link_name', 255)->default('')->comment('鏈接名');
+            $table->string('link_title', 255)->default('')->comment('鏈接標題');
+            $table->string('link_url', 255)->default('')->comment('鏈接URL');
+            $table->unsignedInteger('link_order')->default(0)->comment('排序');
             $table->timestamps();
             $table->softDeletesTz(0);
         });
-        // \DB::statement("ALTER TABLE `blog_links` comment '友情鏈接'");
+        \DB::statement("ALTER TABLE `blog_links` comment '友情鏈接'");
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateBlogLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_links');
+        Schema::dropIfExists('links');
     }
 }

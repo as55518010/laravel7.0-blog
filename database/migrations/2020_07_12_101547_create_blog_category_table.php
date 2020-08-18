@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBlogCategoryTable extends Migration
+class CreateblogCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateBlogCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_category', function (Blueprint $table) {
+        Schema::create('category', function (Blueprint $table) {
             $table->id()->comment('分類表主鍵');
-            $table->string('cate_name', 60)->comment('分類名稱');
-            $table->string('cate_title', 60)->comment('分類別名');
-            $table->integer('cate_order')->default(0)->comment('排序');
-            $table->integer('cate_pid')->default(0)->comment('父ID');
+            $table->string('cate_name', 50)->default('')->comment('分類名稱');
+            $table->string('cate_title', 255)->default('')->comment('分類別名');
+            $table->unsignedInteger('cate_order')->default(0)->comment('排序');
+            $table->unsignedInteger('cate_pid')->default(0)->comment('父ID');
             $table->timestamps();
             $table->unique('cate_name');
+            $table->softDeletesTz(0);
         });
-        // \DB::statement("ALTER TABLE `blog_category` comment '前台用戶表'");
+        \DB::statement("ALTER TABLE `blog_category` comment '文章分類'");
     }
 
     /**
@@ -32,6 +33,6 @@ class CreateBlogCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_category');
+        Schema::dropIfExists('category');
     }
 }
